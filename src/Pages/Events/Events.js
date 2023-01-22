@@ -7,8 +7,9 @@ const Events = () => {
 
     return (
         <div>
-            <div>
-                
+            <div className='flex justify-between'>
+                <p className='text-2xl'>Event</p>
+                <p className='text-xl'>filter</p>
             </div>
             {
                 data.map((info) => (
@@ -21,6 +22,7 @@ const Events = () => {
                     </div>
 
                 ))
+                
             }
         </div>
     );
