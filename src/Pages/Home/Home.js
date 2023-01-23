@@ -25,9 +25,9 @@ const Home = () => {
   }
 
   return (
-    <div className='grid grid-cols-12'>
+    <div className=' lg:grid lg:grid-cols-12'>
 
-      <div className='col-span-1 sticky top-0 h-[500px]'>
+      <div className=' lg:col-span-1 lg:sticky lg:top-16 lg:h-[500px]'>
         <div className="dropdown">
           <label htmlFor="my-drawer" className="btn btn-ghost btn-circle">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
@@ -36,17 +36,20 @@ const Home = () => {
       </div>
 
 
-      <div className='col-span-7 sticky top-0 h-[500px]'>
+      <div className=' lg:col-span-7 lg:sticky lg:top-16 lg:h-[500px]'>
 
-        <p className='text-center text-2xl mb-5'> {info.Gender}</p>
-        <div className='grid grid-cols-2'>
+        <p className='text-center text-2xl mb-5 font-bold'> {info.Gender}</p>
+        
+        {
+          info.ID  ?
+          <div className='lg:grid lg:grid-cols-2'>
 
-          <div>
+          <div className='text-center lg:text-start'>
             <p className='text-2xl font-bold '>{info.ID}</p>
             <p className='text-2xl font-bold mb-3'>Person detected</p>
             
             <div className="overflow-x-auto">
-              <table className="table border-none ">
+              <table className="ml-4 lg:ml-0 table border-none ">
                 
                 
                 <tbody>
@@ -74,28 +77,31 @@ const Home = () => {
               </table>
             </div>
 
-            <p className='text-xl w-1/2 mt-5 font-semibold'>Description: {info.Details}</p>
+            <p className='text-xl text-center lg:text-start lg:w-1/2 mt-5 font-semibold'>Description: {info.Details}</p>
           </div>
-          <div>
-            <img className='w-3/4 h-96' src={info.Image} alt='profile'></img>
+          <div >
+            <img className='mx-auto my-5 lg:w-3/4 h-96' src={info.Image} alt='profile'></img>
           </div>
         </div>
+        :
+        <p className='text-center text-2xl font-semibold pt-5'>Data not Found. Please Click any Event ---></p>
+        }
 
 
 
       </div>
 
 
-      <div className='col-span-4 '>
+      <div className=' flex flex-col justify-center lg:col-span-4 border-4'>
 
         <div>
-          <div className='flex justify-between'>
+          <div className='flex justify-between '>
             <p className='text-2xl'>Event</p>
             <p className='text-xl'>filter</p>
           </div>
           {
             data.map((info) => (
-              <div key={info._id} className='p-3 border-4 m-2 cursor-pointer' onClick={() => handlePersonalInfo(info.ID)}>
+              <div key={info._id} className='p-3 border-4 m-2 cursor-pointer bg-base-300' onClick={() => handlePersonalInfo(info.ID)}>
 
                 <div className='flex justify-between '>
                   <p>{info.ID}: {info.Location}</p>
